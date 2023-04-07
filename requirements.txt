@@ -1,0 +1,6 @@
+tensorflow
+ultralytics
+pandas
+numpy
+matplotlib
+roboflow
