@@ -12,7 +12,7 @@ from formulaires import ImgForm
 app = Flask(__name__)
 app.config['SECRET_KEY']=os.getenv('SECRET_KEY')
 
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+ALLOWED_EXTENSIONS = {'jpg', 'jpeg'}
 
 
 # Route pour la page d'accueil
