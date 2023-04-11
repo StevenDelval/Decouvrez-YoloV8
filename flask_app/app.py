@@ -3,7 +3,6 @@ from flask import Flask, render_template, redirect, url_for, request, session
 from dotenv import load_dotenv
 from io import BytesIO
 from PIL import Image
-import urllib.request
 import matplotlib.pyplot as plt, mpld3
 from ultralytics import YOLO
 import numpy as np
