@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+
+<form action="" method="post" class="img_form" enctype = 'multipart/form-data'>
+
+    <h1>{{title}}</h1>
+    {%if error%} 
+    <p>{{error}}</p>
+    {%endif%}
+
+    <fieldset>
+        {{form.img.label}}
+        {{form.img(required='required')}}
+    </fieldset>
+    
+    <input class="action_button" type="submit" value="Envoyer">
+    {{form.csrf_token}}
+
+</form>
+
+{% if  image %}
+{{ image|safe }}
+{% endif %}
+
+
+{% endblock %}

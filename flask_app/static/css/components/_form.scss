@@ -1,0 +1,46 @@
+.img_form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    h1{
+        padding: 0 4px;
+        text-align: center;
+    }
+
+
+    fieldset {
+        display: flex;
+        flex-flow: column;
+        gap: 16px;
+        width: 75%;
+        border-radius: 12px;
+        textarea{
+            height: 400px;
+            padding: 12px 4px 4px 4px;
+            border-radius: 12px;
+            outline: none;
+            resize: none;
+        }
+        
+        
+
+    }
+    .action_button{
+            border-radius: 4px;
+            border: $fonce 1px solid;
+            background-color: $bordeaux;
+            color: $claire;
+            font-size: 24px;
+            padding: 4px;
+            cursor: pointer;
+        }
+    .action_button:hover{
+        border-radius: 4px;
+        border: $bordeaux 1px solid;
+        background-color: $claire;
+        color: $fonce;
+        padding: 4px;
+    }
+}

@@ -1,0 +1,179 @@
+.navbar{
+    background-color: $claire;
+    height: 64px;
+    position: relative;
+    display: flex;
+    flex-flow: row;
+    justify-content:space-between;
+    align-items: center;
+    padding-left: 96px;
+    &::after{
+        content: "";
+        position: absolute;
+        left: 25%;
+        bottom: 0;
+        width: 50%;
+        border-bottom: 1px solid $fonce;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+}
+
+#link {
+    position: absolute;
+    top: 4px;
+    left: 26px;
+}
+.logonav{
+        
+    
+    h1{
+        font-size: 36px;
+        margin: 0;
+        color: $fonce;
+        
+        
+    }
+}
+.listnav{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    padding: 0 96px;
+    li{
+        &::after{
+                display:block;
+                content: '';
+                border-bottom: solid 1px $bordeaux;  
+                transform: scaleX(0);  
+                transition: transform 250ms ease-in-out;
+                
+        }
+        &:hover::after{
+            transform: scaleX(1);
+        }
+        &:hover{
+            color: $bordeaux;
+        }
+        font-size: 24px;
+        color: $fonce;
+        a{
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+    
+}
+.close{
+    display: none;
+}
+
+@media screen and (max-width:1064px) {
+    nav .listnav li{
+
+        font-size: 16px;
+    }
+    .logonav{
+        
+    
+        h1{
+            font-size: 24px;
+        }
+    }
+}
+
+@media screen and (max-width:800px) {
+    nav{
+        display: flex;
+        flex-flow: column;
+        gap: 20px;
+
+    }
+    .listnav{
+
+        justify-content: center;
+        flex-flow: column;
+    }
+    .navbar {
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+        gap: 20px;
+        #burger {
+            width: 30px;
+            height: 2px;
+            background: $fonce;
+            display: inline-block;
+            position: relative;
+            left: 2px;
+        }
+        .listnav{
+            display: none;
+        }
+
+        #burger::before,
+        #burger::after {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: $fonce;
+            display: inline-block;
+            position: absolute;
+            transform-origin: center;
+            transition: all 0.3s ease;
+        }
+
+        #burger::before {
+            top: -7px;
+        }
+
+        #burger::after {
+            top: 7px;
+        }
+
+        #burger.open {
+            background: transparent;
+            /* la barre du milieu disparait */
+        }
+
+        /* celles du haut et du bas s'inclinent pour former une croix */
+        #burger.open::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        #burger.open::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+       
+    }
+}
+@media screen and (max-width:500px) {
+    .logonav{
+        
+    
+        h1{
+            font-size: 24px;
+        }
+    }
+    
+}
+@media screen and (max-width:400px) {
+    .logonav{
+        
+    
+        h1{
+            font-size: 24px;
+        }
+    }
+    nav .listnav li{
+
+        font-size: 20px;
+    }
+}

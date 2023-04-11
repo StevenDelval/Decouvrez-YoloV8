@@ -177,3 +177,4 @@ pyrightconfig.json
 yolov8n.pt
 coco-and-birds-20220125-1/
 runs/
+flask_app/best.pt
