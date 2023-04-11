@@ -3,4 +3,5 @@ from wtforms import StringField, PasswordField, TextAreaField , RadioField, File
 
 
 class ImgForm(FlaskForm):
-    img = FileField("Image a analyser :")
+    img = FileField("Image en jpeg ou jpg:")
+    url = StringField("Url de l'image :", render_kw={"placeholder": "https://images.pexels.com/photos/8451490/pexels-photo-8451490.jpeg"})

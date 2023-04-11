@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for, request, session
 from dotenv import load_dotenv
 from io import BytesIO
 from PIL import Image
+import urllib.request
 import matplotlib.pyplot as plt, mpld3
 from ultralytics import YOLO
 import numpy as np
@@ -20,18 +21,34 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 def accueil():
     form = ImgForm()
     if form.validate_on_submit():
-        img_file = request.files['img']
-        image = Image.open(img_file)
-        image = np.asarray(image)
-        model = YOLO('./best.pt')
-        result = model.predict(source=image,classes = None)
+        if request.files['img'].filename != '':
+            img_file = request.files['img']
+            image = Image.open(img_file)
+            image = np.asarray(image)
+            model = YOLO('./best.pt')
+            result = model.predict(source=image,classes = None)
 
-        fig, ax = plt.subplots()
-        ax.imshow(result[0].plot(img=image))
+            fig, ax = plt.subplots()
+            ax.imshow(result[0].plot(img=image))
+            
+            htmlimg = mpld3.fig_to_html(fig)
+
+            return render_template('index.html',form=form,image=htmlimg)
         
-        htmlimg = mpld3.fig_to_html(fig)
+        if form.url:
+            response = requests.get(form.url.data)
+            image = Image.open(BytesIO(response.content))
+            image = np.asarray(image)
+            model = YOLO('./best.pt')
+            result = model.predict(source=image,classes = None)
 
-        return render_template('index.html',form=form,image=htmlimg)
+            fig, ax = plt.subplots()
+            ax.imshow(result[0].plot(img=image))
+            
+            htmlimg = mpld3.fig_to_html(fig)
+
+            return render_template('index.html',form=form,image=htmlimg)
+    
 
 
 
